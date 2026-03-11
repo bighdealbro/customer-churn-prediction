@@ -2,17 +2,11 @@
 
 ## Overview
 
-Customer churn is a major challenge for subscription-based businesses such as telecom providers, SaaS platforms, and financial services. Retaining customers is often significantly cheaper than acquiring new ones.
+Customer churn is a major challenge for subscription-based businesses such as telecom companies and SaaS platforms. Predicting which customers are likely to leave helps businesses take preventive actions and improve retention.
 
-This project builds a machine learning model that predicts whether a customer is likely to churn based on demographic information, service usage, and billing data.
+This project builds a machine learning model that predicts whether a telecom customer will churn based on account information, services used, and billing details.
 
-The project includes:
-
-- Exploratory data analysis
-- Data preprocessing pipeline
-- Machine learning model training
-- Model evaluation
-- Interactive prediction app using Streamlit
+The project includes data analysis, preprocessing, model training, evaluation, and a simple web app for predictions.
 
 ---
 
@@ -20,81 +14,116 @@ The project includes:
 
 Telco Customer Churn dataset.
 
-Each row represents a telecom customer. The goal is to predict the **Churn** column.
+Each row represents a customer and includes features such as:
 
-Key features include:
-
-- tenure
-- contract type
-- internet service
-- monthly charges
-- payment method
-- service subscriptions
+* tenure
+* contract type
+* internet service
+* monthly charges
+* payment method
+* service subscriptions
 
 Target variable:
 
-Churn  
-1 = customer leaves  
-0 = customer stays
+**Churn**
+
+* 1 → Customer leaves
+* 0 → Customer stays
 
 ---
 
 ## Project Structure
+
+```
 customer-churn-prediction
 │
 ├── data
-│ └── telco_churn.csv
+│   └── telco_churn.csv
 │
 ├── models
-│ └── churn_model.pkl
+│   └── churn_model.pkl
 │
 ├── notebooks
-│ └── churn_analysis.ipynb
+│   └── churn_analysis.ipynb
 │
 ├── src
-│ ├── preprocess.py
-│ ├── train.py
-│ └── predict.py
+│   ├── preprocess.py
+│   ├── train.py
+│   └── predict.py
 │
 ├── app
-│ └── app.py
+│   └── app.py
 │
 ├── requirements.txt
+├── .gitignore
 └── README.md
-
----
-
-## Workflow
-
-1. Load dataset
-2. Clean data and handle missing values
-3. Encode categorical variables
-4. Train/test split
-5. Train machine learning models
-6. Evaluate model performance
-7. Save trained model
-8. Deploy prediction interface with Streamlit
+```
 
 ---
 
 ## Model
 
-Random Forest Classifier
+The model used is a **Random Forest Classifier**.
 
-Evaluation results:
+Performance on the test set:
 
-Accuracy: ~79%  
-ROC-AUC: ~0.81
+* Accuracy: ~79%
+* ROC-AUC: ~0.81
 
-Example classification metrics:
-
-- Precision (churn): ~0.63
-- Recall (churn): ~0.48
-
-The model identifies customers at risk of leaving, allowing businesses to take proactive retention actions.
+The model helps identify customers at risk of leaving so businesses can take retention actions.
 
 ---
 
 ## Installation
 
-Clone the repository and install dependencies.
+Clone the repository:
+
+```
+git clone https://github.com/YOUR_USERNAME/customer-churn-prediction.git
+cd customer-churn-prediction
+```
+
+Install dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+---
+
+## Train the Model
+
+Run:
+
+```
+python src/train.py
+```
+
+This will preprocess the data, train the model, and save it in the `models` folder.
+
+---
+
+## Run the App
+
+Start the Streamlit app:
+
+```
+streamlit run app/app.py
+```
+
+Then open the local URL shown in the terminal to use the churn prediction interface.
+
+---
+
+## Future Improvements
+
+* Hyperparameter tuning
+* Feature importance visualization
+* Model explainability
+* Deployment to a cloud platform
+
+---
+
+## Author
+
+Data science project demonstrating an end-to-end machine learning workflow including data preprocessing, model training, evaluation, and deployment.
